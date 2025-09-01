@@ -6,18 +6,20 @@
     <title>CafeDate - Find Your Perfect Match</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Three.js Container -->
     <div id="threejs-container"></div>
 
+    <!-- Floating background elements -->
     <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 10%;"></div>
     <div class="floating-element" style="width: 150px; height: 150px; bottom: 20%; right: 15%;"></div>
     <div class="floating-element" style="width: 80px; height: 80px; top: 30%; right: 25%;"></div>
     <div class="floating-element" style="width: 120px; height: 120px; bottom: 10%; left: 20%;"></div>
 
     <div class="container">
+        <!-- Coffee elements for decoration -->
         <div class="coffee-element floating" style="top: 50px; left: 30px; transform: rotate(-15deg);">
             <i class="fas fa-coffee"></i>
         </div>
@@ -28,6 +30,7 @@
             <i class="fas fa-cookie"></i>
         </div>
 
+        <!-- Login Screen -->
         <div id="login-screen" class="screen active">
             <div class="logo">
                 <i class="fas fa-mug-hot"></i>CafeDate
@@ -49,11 +52,13 @@
             </div>
         </div>
 
+        <!-- Signup Screen -->
         <div id="signup-screen" class="screen">
             <div class="header">
                 <i class="fas fa-arrow-left" onclick="showScreen('login-screen')"></i>
                 <h2>Create Account</h2>
-                <div></div> </div>
+                <div></div> <!-- Empty for spacing -->
+            </div>
             <div style="padding: 20px; flex: 1; overflow-y: auto;">
                 <div class="input-group">
                     <input type="text" placeholder="Full Name">
@@ -79,6 +84,7 @@
             </div>
         </div>
 
+        <!-- Profile Screen -->
         <div id="profile-screen" class="screen">
             <div class="header">
                 <i class="fas fa-bars"></i>
@@ -92,14 +98,15 @@
                     </i>
                 </div>
             </div>
-
+            
             <div class="boost-btn">
                 <i class="fas fa-bolt"></i> Boost
             </div>
-
+            
             <div class="profile-stack" id="profile-stack">
-                </div>
-
+                <!-- Profile cards will be added here by JavaScript -->
+            </div>
+            
             <div class="action-buttons">
                 <div class="action-btn skip" onclick="swipeLeft()">
                     <i class="fas fa-times"></i>
@@ -111,7 +118,7 @@
                     <i class="fas fa-heart"></i>
                 </div>
             </div>
-
+            
             <div class="nav">
                 <div class="nav-item active">
                     <i class="fas fa-compass"></i>
@@ -132,16 +139,18 @@
             </div>
         </div>
 
+        <!-- Liked Users Screen -->
         <div id="liked-screen" class="screen">
             <div class="header">
                 <i class="fas fa-arrow-left" onclick="showScreen('profile-screen')"></i>
                 <h2>Liked Users</h2>
                 <div></div>
             </div>
-
+            
             <div class="liked-container" id="liked-container">
-                </div>
-
+                <!-- Liked users will be added here by JavaScript -->
+            </div>
+            
             <div class="nav">
                 <div class="nav-item" onclick="showScreen('profile-screen')">
                     <i class="fas fa-compass"></i>
@@ -162,16 +171,18 @@
             </div>
         </div>
 
+        <!-- Matches Screen -->
         <div id="matches-screen" class="screen">
             <div class="header">
                 <i class="fas fa-arrow-left" onclick="showScreen('profile-screen')"></i>
                 <h2>Matches</h2>
                 <div></div>
             </div>
-
+            
             <div class="matches-container" id="matches-container">
-                </div>
-
+                <!-- Matches will be added here by JavaScript -->
+            </div>
+            
             <div class="nav">
                 <div class="nav-item" onclick="showScreen('profile-screen')">
                     <i class="fas fa-compass"></i>
@@ -192,6 +203,7 @@
             </div>
         </div>
 
+        <!-- Chat Screen -->
         <div id="chat-screen" class="screen">
             <div class="chat-header">
                 <i class="fas fa-arrow-left" onclick="showScreen('matches-screen')"></i>
@@ -203,25 +215,26 @@
                 <i class="fas fa-video" onclick="startVideoCall()" style="margin-left: auto; margin-right: 15px; font-size: 20px; cursor: pointer;"></i>
                 <i class="fas fa-ellipsis-v"></i>
             </div>
-
+            
             <div class="chat-messages" id="chat-messages">
-                </div>
-
+                <!-- Messages will be added here by JavaScript -->
+            </div>
+            
             <div class="chat-input">
                 <input type="text" id="message-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
                 <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
             </div>
-
+            
             <div class="video-call-btn" id="video-call-btn">
                 <i class="fas fa-video"></i>
                 Video Call
             </div>
-
+            
             <div class="date-planning" id="date-planning-btn" onclick="showDateModal()">
                 <i class="fas fa-calendar"></i>
                 Plan a Date
             </div>
-
+            
             <div class="nav">
                 <div class="nav-item" onclick="showScreen('profile-screen')">
                     <i class="fas fa-compass"></i>
@@ -242,6 +255,7 @@
             </div>
         </div>
 
+        <!-- Date Planning Modal -->
         <div class="date-modal" id="date-modal">
             <h3>Plan a Date</h3>
             <div class="date-option" onclick="scheduleDate('coffee')">
@@ -263,6 +277,7 @@
             <button class="btn" style="width: 100%; margin-top: 20px;" onclick="hideDateModal()">Cancel</button>
         </div>
 
+        <!-- Video Call Screen -->
         <div id="video-call-screen" class="screen">
             <div class="video-container">
                 <video class="remote-video" id="remote-video" autoplay></video>
@@ -281,17 +296,18 @@
             </div>
         </div>
 
+        <!-- Subscription Screen -->
         <div id="subscription-screen" class="screen">
             <div class="header">
                 <i class="fas fa-arrow-left" onclick="showScreen('profile-screen')"></i>
                 <h2>Go Premium</h2>
                 <div></div>
             </div>
-
+            
             <div class="subscription-card">
                 <h2>Unlock All Features</h2>
                 <div class="price">₹29<span>/month</span></div>
-
+                
                 <div class="features">
                     <div class="feature">
                         <i class="fas fa-check-circle"></i>
@@ -318,11 +334,11 @@
                         <span>Boost your profile once per month</span>
                     </div>
                 </div>
-
+                
                 <button class="btn" style="width: 100%;" onclick="subscribe()">Subscribe Now</button>
                 <p style="font-size: 12px; margin-top: 15px;">Auto-renews monthly. Cancel anytime.</p>
             </div>
-
+            
             <div class="nav">
                 <div class="nav-item" onclick="showScreen('profile-screen')">
                     <i class="fas fa-compass"></i>
@@ -343,6 +359,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
